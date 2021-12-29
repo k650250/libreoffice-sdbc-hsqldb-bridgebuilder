@@ -33,8 +33,6 @@ fun main() {
             // データ挿入
             sql = """INSERT INTO "t_sample"("value") VALUES(?)""";
             val prep = conn.prepareStatement(sql)
-            //final Scanner scan = new Scanner(System.in))
-            
             print("追加データを入力してください: ")
             prep.setString(1, readLine())
             prep.executeUpdate()
