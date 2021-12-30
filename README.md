@@ -38,6 +38,7 @@ javac 17.0.1
 $ javac -encoding UTF-8 src/*.java -d .
 ```
 ### テストドライバプログラムを実行する
+`lib`ディレクトリの中に`hsqldb.jar`が置かれていることを確認してから
 
 *MacOS / Linux:*
 ```
@@ -73,6 +74,7 @@ info: kotlinc-jvm 1.6.10 (JRE 17.0.1+12-LTS-39)
 ```
 
 ### テストドライバプログラムの Kotlin ソースファイル（`workdir/src/TestDriver.kt`）をコンパイルする。
+`lib`ディレクトリの中に`odb.jar`が置かれていることを確認してから
 
 *MacOS / Linux:*
 ```
