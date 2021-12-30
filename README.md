@@ -14,14 +14,14 @@ OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋�
 2. `workdir/lib`ディレクトリの中に`hsqldb.jar`を配置（詳細は後述）
 3. コンソールを起動し、`workdir`ディレクトリを作業ディレクトリとする
 
-## `hsqldb.jar`の入手
-以後、LibreOffice のバージョンは`7.2.4.1`、HSQLDB のバージョンは`1.8.0.10`であることを前提とする。
-
-- [download | LibreOffice(リブレオフィス) - 無料で自由に使えるオフィスソフト - OpenOffice.orgの進化系 - Microsoft Officeと高い相互運用性](https://ja.libreoffice.org/download/download/)
+## `hsqldb.jar`と LibreOffice の入手
 - [HyperSQL Database Engine (HSQLDB) -  Browse Files at SourceForge.net](https://sourceforge.net/projects/hsqldb/files/)
   - **[HSQLDB-1.8.0.10](https://sourceforge.net/projects/hsqldb/files/hsqldb/hsqldb_1_8_0/)**
-    - `hsqldb.jar`は、ダウンロードしたzipファイルの`lib`ディレクトリの中に存在する
+    - `hsqldb.jar`は、ダウンロードしたzipファイルの中の`lib`ディレクトリの中に存在する
     - `hsqldb.jar`を<b>`workdir/lib`ディレクトリの中に配置する</b>
+- [download | LibreOffice(リブレオフィス) - 無料で自由に使えるオフィスソフト - OpenOffice.orgの進化系 - Microsoft Officeと高い相互運用性](https://ja.libreoffice.org/download/download/)
+
+以後、HSQLDB のバージョンは`1.8.0.10`、LibreOffice のバージョンは`7.2.4.1`であることを前提とする。
 
 ## `workdir/lib/odb.jar`の作成手順
 
