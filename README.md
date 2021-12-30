@@ -42,12 +42,12 @@ $ javac -encoding UTF-8 src/*.java -d .
 
 *MacOS / Linux:*
 ```
-$ java -cp ".:./lib/hsqldb.jar" com/k650250/odb/testing/TestDriver
+$ java -cp ".:./lib/hsqldb.jar" com.k650250.odb.testing.TestDriver
 ```
 
 *Windows:*
 ```
-> java -cp ".;./lib/hsqldb.jar" com/k650250/odb/testing/TestDriver
+> java -cp ".;./lib/hsqldb.jar" com.k650250.odb.testing.TestDriver
 ```
 
 ### `workdir/lib/odb.jar`の作成
