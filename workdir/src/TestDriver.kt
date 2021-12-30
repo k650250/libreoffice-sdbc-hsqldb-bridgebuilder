@@ -9,10 +9,10 @@ import java.sql.SQLException
 
 fun main() {
     // ロギングの環境設定ファイル (※ HSQLDB-1.8.0.10 では使用しない)
-    //System.setProperty("java.util.logging.config.file", "logging.properties");
+    //System.setProperty("java.util.logging.config.file", "logging.properties")
 
     try {
-        Class.forName("org.hsqldb.jdbcDriver");
+        Class.forName("org.hsqldb.jdbcDriver")
 
         ODBFile.open("sample.odb").use { odbFile ->
             val conn = DriverManager.getConnection(odbFile.toUrl(), "sa", "")
@@ -31,7 +31,7 @@ fun main() {
             records.close()
 
             // データ挿入
-            sql = """INSERT INTO "t_sample"("value") VALUES(?)""";
+            sql = """INSERT INTO "t_sample"("value") VALUES(?)"""
             val prep = conn.prepareStatement(sql)
             print("追加データを入力してください: ")
             prep.setString(1, readLine())
@@ -51,7 +51,7 @@ fun main() {
         }
     } catch (e: ClassNotFoundException) {
         e.printStackTrace()
-        System.err.println("org.hsqldb.jdbcDriver が見つかりません。");
+        System.err.println("org.hsqldb.jdbcDriver が見つかりません。")
     } catch (e: SQLException) {
         e.printStackTrace()
         System.err.println("考えられる原因:")
