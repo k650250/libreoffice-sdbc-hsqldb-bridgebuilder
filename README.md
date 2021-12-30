@@ -25,7 +25,9 @@ OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋�
 
 ## `workdir/lib/odb.jar`の作成手順
 
-### `workdir`ディレクトリを作業ディレクトリとした上で、Javaコンパイラのバージョン情報を確認する。
+### `workdir`ディレクトリを作業ディレクトリとする。
+
+### Javaコンパイラのバージョン情報を確認する。
 ```
 $ javac -version
 javac 17.0.1
@@ -60,6 +62,8 @@ $ java -jar lib/odb.jar
 ```
 
 ## 他のJVM言語（例: Kotlin）で`workdir/lib/odb.jar`を参照する
+
+### `workdir`ディレクトリを作業ディレクトリとする。
 
 ### Kotlinコンパイラのバージョン情報を確認する。
 
