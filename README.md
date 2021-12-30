@@ -86,7 +86,7 @@ $ kotlinc-jvm -cp ".:./lib/odb.jar" src/TestDriver.kt -include-runtime -d lib/od
 > kotlinc-jvm -cp ".;./lib/odb.jar" src/TestDriver.kt -include-runtime -d lib/odbkt.jar
 ```
 
-### `workdir/lib/odb.jar`等を参照させる為、jarファイルのマニフェストファイルを更新する。
+### `workdir/lib/odb.jar`等を参照させる為、jarファイルのマニフェストを更新する。
 
 ```
 $ jar uvfm lib/odbkt.jar mfkt.txt
