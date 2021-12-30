@@ -1,5 +1,5 @@
 # libreoffice-sdbc-hsqldb-bridgebuilder
-OpenOffice / LibreOffice Base のデータベースファイル (*.odb) 中の埋め込み HSQLDB (HyperSQL Database) に接続する為のツール
+OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋め込み HSQLDB (HyperSQL Database Engine) に接続する為のツール
 
 ## このツールの機能が及ぶ範囲
 ||読|書|
@@ -17,7 +17,8 @@ OpenOffice / LibreOffice Base のデータベースファイル (*.odb) 中の�
 ## `hsqldb.jar`の入手
 以後、LibreOffice のバージョンは`7.2.4.1`、HSQLDB のバージョンは`1.8.0.10`であることを前提とする。
 
-- [HyperSQL Database Engine (HSQLDB)](https://sourceforge.net/projects/hsqldb/files/)
+- [download | LibreOffice(リブレオフィス) - 無料で自由に使えるオフィスソフト - OpenOffice.orgの進化系 - Microsoft Officeと高い相互運用性](https://ja.libreoffice.org/download/download/)
+- [HyperSQL Database Engine (HSQLDB) -  Browse Files at SourceForge.net](https://sourceforge.net/projects/hsqldb/files/)
   - **[HSQLDB-1.8.0.10](https://sourceforge.net/projects/hsqldb/files/hsqldb/hsqldb_1_8_0/)**
     - `hsqldb.jar`は、ダウンロードしたzipファイルの`lib`ディレクトリの中に存在する
     - `hsqldb.jar`を<b>`workdir/lib`ディレクトリの中に配置する</b>
