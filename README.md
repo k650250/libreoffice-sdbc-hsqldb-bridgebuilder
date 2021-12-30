@@ -1,7 +1,7 @@
 # libreoffice-sdbc-hsqldb-bridgebuilder
 OpenOffice / LibreOffice Base のデータベースファイル (*.odb) 中の埋め込み HSQLDB (HyperSQL Database) に接続する為のツール
 
-## このツールが及ぶ範囲
+## このツールの機能が及ぶ範囲
 ||読|書|
 |---:|:---:|:---:|
 |テーブル（とビュー）|&#10004;|&#10004;|
