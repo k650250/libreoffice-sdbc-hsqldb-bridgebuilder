@@ -91,12 +91,12 @@ info: kotlinc-jvm 1.6.10 (JRE 17.0.1+12-LTS-39)
 
 *MacOS / Linux:*
 ```
-$ kotlinc-jvm -cp ".:./lib/odb.jar" src/TestDriver.kt -include-runtime -d lib/odbkt.jar
+$ kotlinc-jvm -cp ".:./lib/odb.jar" src/TestDriver.kt -jvm-target 17 -include-runtime -d lib/odbkt.jar
 ```
 
 *Windows:*
 ```
-> kotlinc-jvm -cp ".;./lib/odb.jar" src/TestDriver.kt -include-runtime -d lib/odbkt.jar
+> kotlinc-jvm -cp ".;./lib/odb.jar" src/TestDriver.kt -jvm-target 17 -include-runtime -d lib/odbkt.jar
 ```
 
 ### `workdir/lib/odb.jar`等を参照させる為、jarファイルのマニフェストを更新する。
