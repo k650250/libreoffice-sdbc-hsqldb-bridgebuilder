@@ -14,18 +14,21 @@ OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋�
 2. `workdir/lib`ディレクトリの中に`hsqldb.jar`を配置（詳細は後述）
 3. コンソールを起動し、`workdir`ディレクトリを作業ディレクトリとする
 
-&nbsp;.<br />
-&#9507; lib<br />
+<pre><code>
+&nbsp;./<br />
+&#9507; lib/<br />
 &#9475;&#9507; dummy<br />
-&#9475;&#9495; **hsqldb.jar**<br />
-&#9507; src<br />
+&#9475;&#9495; <b>hsqldb.jar</b><br />
+&#9507; src/<br />
 &#9475;&#9507; ODBFile.java<br />
 &#9475;&#9507; TestDriver.java<br />
-&#9475;&#9495; TestDriver.kt<br />
+&#9475;&#9507; TestDriver.kt<br />
+&#9475;&#9495; TestDriver.kts<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
 &#9507; mfkt.txt<br />
 &#9495; sample.odb<br />
+</code></pre>
 
 ## `hsqldb.jar`と LibreOffice の入手
 - [HyperSQL Database Engine (HSQLDB) -  Browse Files at SourceForge.net](https://sourceforge.net/projects/hsqldb/files/)
@@ -36,24 +39,24 @@ OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋�
 
 以後、HSQLDB のバージョンは`1.8.0.10`、LibreOffice のバージョンは`7.2.4.1`であることを前提とする。
 
-## `workdir/lib/odb.jar`の作成手順
+## `./lib/odb.jar`の作成手順
 
 ### `workdir`ディレクトリを作業ディレクトリとする。
 
-### Javaコンパイラのバージョン情報を確認する。
+### Java コンパイラのバージョン情報を確認する。
 ```
 $ javac -version
 javac 17.0.1
 ```
 
-### `workdir/src`ディレクトリの中の`*.java`ソースファイルをコンパイルする。
+### `./src`ディレクトリの中の`*.java`ソースファイルをコンパイルする。
 ```
-$ javac -encoding UTF-8 src/*.java -d .
+$ javac -encoding UTF-8 ./src/*.java -d .
 ```
 ### テストドライバプログラムを実行する
 `lib`ディレクトリの中に`hsqldb.jar`が置かれていることを確認してから
 
-*MacOS / Linux:*
+*macOS / Linux:*
 ```
 $ java -cp ".:./lib/hsqldb.jar" com.k650250.odb.testing.TestDriver
 ```
@@ -63,53 +66,95 @@ $ java -cp ".:./lib/hsqldb.jar" com.k650250.odb.testing.TestDriver
 > java -cp ".;./lib/hsqldb.jar" com.k650250.odb.testing.TestDriver
 ```
 
-### `workdir/lib/odb.jar`の作成
+### `./lib/odb.jar`の作成
 
 ```
-$ jar cfm lib/odb.jar mf.txt com
+$ jar cfm ./lib/odb.jar ./mf.txt com
 ```
 
-### `workdir/lib/odb.jar`の中に埋め込まれたテストドライバプログラムを実行する
+### `./lib/odb.jar`の中に埋め込まれたテストドライバプログラムを実行する。
 
 ```
-$ java -jar lib/odb.jar
+$ java -jar ./lib/odb.jar
 ```
 
-## 他のJVM言語（例: Kotlin）で`workdir/lib/odb.jar`を参照する
+## 他のJVM言語（例: Kotlin）で`./lib/odb.jar`を参照する
 
-### `workdir`ディレクトリを作業ディレクトリとする。
+### この時点でのディレクトリ構成
 
-### Kotlinコンパイラのバージョン情報を確認する。
+#### `workdir`ディレクトリを作業ディレクトリとする。
+
+<pre><code>
+&nbsp;./<br />
+&#9507; com/<br />
+&#65049;
+&#9507; lib/<br />
+&#9475;&#9507; dummy<br />
+&#9475;&#9507; hsqldb.jar<br />
+&#9475;&#9495; odb.jar<br />
+&#9507; src/<br />
+&#9475;&#9507; ODBFile.java<br />
+&#9475;&#9507; TestDriver.java<br />
+&#9475;&#9507; TestDriver.kt<br />
+&#9475;&#9495; TestDriver.kts<br />
+&#9507; logging.properties<br />
+&#9507; mf.txt<br />
+&#9507; mfkt.txt<br />
+&#9495; sample.odb<br />
+</code></pre>
+
+### Kotlin (`*.kt`) の場合
+
+#### Kotlin コンパイラのバージョン情報を確認する。
 
 ```
 $ kotlinc-jvm -version
 info: kotlinc-jvm 1.6.10 (JRE 17.0.1+12-LTS-39)
 ```
 
-### テストドライバプログラムの Kotlin ソースファイル（`workdir/src/TestDriver.kt`）をコンパイルする。
-`lib`ディレクトリの中に`odb.jar`が置かれていることを確認してから
+#### テストドライバプログラムの Kotlin ソースファイル（`./src/TestDriver.kt`）をコンパイルする。
+`./lib/odb.jar`が置かれていることを確認してから
 
-*MacOS / Linux:*
+*macOS / Linux:*
 ```
-$ kotlinc-jvm -cp ".:./lib/odb.jar" src/TestDriver.kt -jvm-target 17 -include-runtime -d lib/odbkt.jar
+$ kotlinc-jvm -cp ".:./lib/odb.jar" ./src/TestDriver.kt -jvm-target 17 -include-runtime -d ./lib/odbkt.jar
 ```
 
 *Windows:*
 ```
-> kotlinc-jvm -cp ".;./lib/odb.jar" src/TestDriver.kt -jvm-target 17 -include-runtime -d lib/odbkt.jar
+> kotlinc-jvm -cp ".;./lib/odb.jar" ./src/TestDriver.kt -jvm-target 17 -include-runtime -d ./lib/odbkt.jar
 ```
 
-### `workdir/lib/odb.jar`等を参照させる為、jarファイルのマニフェストを更新する。
+#### `./lib/odb.jar`等を参照させる為、jarファイルのマニフェストを更新する。
 
 ```
-$ jar uvfm lib/odbkt.jar mfkt.txt
+$ jar uvfm ./lib/odbkt.jar ./mfkt.txt
 マニフェストが更新されました
 ```
 
-### `workdir/lib/odbkt.jar`の中に埋め込まれたテストドライバプログラムを実行する
+#### `./lib/odbkt.jar`の中に埋め込まれたテストドライバプログラムを実行する。
 
 ```
-$ java -jar lib/odbkt.jar
+$ java -jar ./lib/odbkt.jar
 ```
 
+### Kotlin スクリプト (`*.kts`) の場合
 
+#### Kotlin のバージョン情報を確認する。
+
+```
+$ kotlin -version
+Kotlin version 1.6.10-release-923 (JRE 17.0.1+12-LTS-39)
+```
+
+#### テストドライバプログラムを実行する
+
+*macOS / Linux:*
+```
+$ kotlin -howtorun script -cp "./lib/hsqldb.jar:./lib/odb.jar:$(dirname "`which kotlin`")/../lib/kotlin-stdlib-jdk7.jar" ./src/TestDriver.kts
+```
+
+*Windows:*
+```
+> kotlin -howtorun script -cp "./lib/hsqldb.jar;./lib/odb.jar;!_KOTLIN_HOME!/lib/kotlin-stdlib-jdk7.jar" ./src/TestDriver.kts
+```
