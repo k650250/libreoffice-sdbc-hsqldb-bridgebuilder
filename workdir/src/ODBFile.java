@@ -2,6 +2,7 @@
 
 package com.k650250.odb;
 
+import com.k650250.odb.QueryCommand;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -14,7 +15,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-//import java.lang.AutoCloseable;
+import java.lang.AutoCloseable;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -33,7 +34,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class ODBFile extends File implements Closeable {
+public class ODBFile extends File implements AutoCloseable, Closeable {
     protected final String DB_CLUSTER_DIR_NAME = "database";
     protected Document content = null;
     protected File dbRootDir = null;
@@ -226,7 +227,7 @@ public class ODBFile extends File implements Closeable {
                 tmp.delete();
             }
             if (this.dbRootDir != null) {
-                this.deleteDir(this.dbRootDir);
+                this.deleteRecursively(this.dbRootDir);
             }
             this.dbRootDir = null;
             this.content = null;
@@ -271,7 +272,7 @@ public class ODBFile extends File implements Closeable {
     /* インスタンス・メソッド
      * クエリーを取得
      */
-    public String getQueryCommand(String name) {
+    public QueryCommand getQueryCommand(String name) {
         if (this.isClosed()) {
             return null;
         }
@@ -286,7 +287,7 @@ public class ODBFile extends File implements Closeable {
             Element query = (Element)queries.item(i);
 
             if (name.equals(query.getAttribute(NAME_ATTR))) {
-                return query.getAttribute(COMMAND_ATTR);
+                return new QueryCommand(query.getAttribute(COMMAND_ATTR), this);
             }
         }
 
@@ -335,7 +336,7 @@ public class ODBFile extends File implements Closeable {
     }
 
     // ディレクトリ（空でないのを含む。）を削除
-    private void deleteDir(File dir) {
+    private void deleteRecursively(File dir) {
         final String[] fileNames = dir.list();
         if (fileNames == null) {
             return;
@@ -343,7 +344,7 @@ public class ODBFile extends File implements Closeable {
         for (String fileName : fileNames) {
             final File file = new File(dir, fileName);
             if (file.isDirectory()) {
-                this.deleteDir(file);
+                this.deleteRecursively(file);
             } else {
                 file.delete();
             }
