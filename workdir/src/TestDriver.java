@@ -33,9 +33,10 @@ class TestDriver {
             String sql;
 
             System.out.println("[更新前のデータ一覧]");
-            //sql = "SELECT * FROM \"t_sample\"";       // テーブル
-            //sql = "SELECT * FROM \"v_sample\"";       // ビュー
-            sql = odbFile.getQueryCommand("q_sample");  // クエリー
+            //sql = "SELECT * FROM \"t_sample\"";  // テーブル
+            //sql = "SELECT * FROM \"v_sample\"";  // ビュー
+            //sql = odbFile.getQueryCommand("q_sample").toString();         // クエリー (問合せ文中にクエリー名が含まれない場合)
+            sql = odbFile.getQueryCommand("q_SAMPLE").expand().toString();  // クエリー (問合せ文中にクエリー名が含まれる場合)
             try (final ResultSet records = st.executeQuery(sql)) {
                 while (records.next()) {
                     System.out.println(records.getString("key") + "\t" + records.getString("value"));
@@ -66,6 +67,7 @@ class TestDriver {
             System.err.println("考えられる原因:");
             System.err.println("- hsqldb.jar が正常に読み込まれていない");
             System.err.println("- このデータベースを別のプロセスが使用中");
+            System.err.println("- 問合せ文中にクエリー名が含まれる");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
