@@ -1,5 +1,26 @@
 # libreoffice-sdbc-hsqldb-bridgebuilder
-OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋め込み HSQLDB (HyperSQL Database Engine) に接続する為のツール
+OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋め込み HSQLDB (HyperSQL Database Engine) に接続する為のツール。
+
+例えば、`./sample.odb`の埋め込み HSQLDB にスタンドアロンモードで接続する際、
+
+```
+      DriverManager.getConnection("jdbc:hsqldb:file:./sample.odb;shutdown=true", "sa", "").use { conn ->
+          // 諸々の処理
+      }
+```
+
+では接続不可能ですが、次のように加筆・修正することによって接続可能となるツールです。
+
+```diff
++ ODBFile.open("sample.odb").use { odbFile ->
+-     DriverManager.getConnection("jdbc:hsqldb:file:./sample.odb;shutdown=true", "sa", "").use { conn ->
++     DriverManager.getConnection(odbFile.toUrl(), "sa", "").use { conn ->
+          // 諸々の処理
+      }
++ }
+```
+
+上記コードは、`workdir/src/TestDriver.kts`を参考。
 
 ## このツールの機能が及ぶ範囲
 ||読|書|
@@ -147,7 +168,7 @@ $ kotlin -version
 Kotlin version 1.6.10-release-923 (JRE 17.0.1+12-LTS-39)
 ```
 
-#### テストドライバプログラムを実行する
+#### テストドライバプログラムを実行する。
 
 *macOS / Linux:*
 ```
