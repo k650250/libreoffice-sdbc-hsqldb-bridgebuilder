@@ -45,7 +45,8 @@ OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋�
 &#9475;&#9507; QueryCommand.java<br />
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.kt<br />
-&#9475;&#9495; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9495; TestDriver.scala<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
 &#9507; mfkt.txt<br />
@@ -100,7 +101,7 @@ $ jar cfm ./lib/odb.jar ./mf.txt com
 $ java -jar ./lib/odb.jar
 ```
 
-## 他のJVM言語（例: Kotlin）で`./lib/odb.jar`を参照する
+## 他のJVM言語（例: Kotlin、Scala）で`./lib/odb.jar`を参照する
 
 ### この時点でのディレクトリ構成
 
@@ -119,7 +120,8 @@ $ java -jar ./lib/odb.jar
 &#9475;&#9507; QueryCommand.java<br />
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.kt<br />
-&#9475;&#9495; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9495; TestDriver.scala<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
 &#9507; mfkt.txt<br />
@@ -181,3 +183,26 @@ $ kotlin -howtorun script -cp "./lib/hsqldb.jar:./lib/odb.jar:$(dirname "`which 
 ```
 > kotlin -howtorun script -cp "./lib/hsqldb.jar;./lib/odb.jar;!_KOTLIN_HOME!/lib/kotlin-stdlib-jdk7.jar" ./src/TestDriver.kts
 ```
+
+### Scala (`*.scala`) の場合
+
+#### Scala のバージョン情報を確認する。
+
+```
+$ cs launch scala3 -- -version
+Scala code runner version 3.1.2-RC1-bin-20220106-0b4c6e7-NIGHTLY-git-0b4c6e7 --
+Copyright 2002-2022, LAMP/EPFL
+```
+
+#### テストドライバプログラムを実行する。
+
+*macOS / Linux:*
+```
+$ cs launch scala3 -- -cp "./lib/hsqldb.jar:./lib/odb.jar" ./src/TestDriver.scala
+```
+
+*Windows:*
+```
+> cs launch scala3 -- -cp "./lib/hsqldb.jar;./lib/odb.jar" ./src/TestDriver.scala
+```
+
