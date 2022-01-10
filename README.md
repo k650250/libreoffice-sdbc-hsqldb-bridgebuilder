@@ -46,6 +46,7 @@ OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋�
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.kt<br />
 &#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.py<br />
 &#9475;&#9495; TestDriver.scala<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
@@ -101,7 +102,7 @@ $ jar cfm ./lib/odb.jar ./mf.txt com
 $ java -jar ./lib/odb.jar
 ```
 
-## 他のJVM言語（例: Kotlin、Scala）で`./lib/odb.jar`を参照する
+## 他のJVM言語（例: Kotlin、Jython、Scala）で`./lib/odb.jar`を参照する
 
 ### この時点でのディレクトリ構成
 
@@ -121,6 +122,7 @@ $ java -jar ./lib/odb.jar
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.kt<br />
 &#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.py<br />
 &#9475;&#9495; TestDriver.scala<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
@@ -184,6 +186,27 @@ $ kotlin -howtorun script -cp "./lib/hsqldb.jar:./lib/odb.jar:$(dirname "`which 
 > kotlin -howtorun script -cp "./lib/hsqldb.jar;./lib/odb.jar;!_KOTLIN_HOME!/lib/kotlin-stdlib-jdk7.jar" ./src/TestDriver.kts
 ```
 
+### Jython/JPython (`*.py`) の場合
+
+#### Jython のバージョン情報を確認する。
+
+```
+$ jython --version
+Jython 2.7.2
+```
+
+#### テストドライバプログラムを実行する。
+
+*macOS / Linux:*
+```
+$ jython -J-cp "./lib/hsql.jar:./lib/odb.jar" ./src/TestDriver.py
+```
+
+*Windows:*
+```
+> jython -J-cp "./lib/hsql.jar;./lib/odb.jar" ./src/TestDriver.py
+```
+
 ### Scala (`*.scala`) の場合
 
 #### Scala のバージョン情報を確認する。
@@ -205,4 +228,3 @@ $ cs launch scala3 -- -cp "./lib/hsqldb.jar:./lib/odb.jar" ./src/TestDriver.scal
 ```
 > cs launch scala3 -- -cp "./lib/hsqldb.jar;./lib/odb.jar" ./src/TestDriver.scala
 ```
-
