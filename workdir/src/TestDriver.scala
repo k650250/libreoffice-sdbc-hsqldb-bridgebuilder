@@ -22,8 +22,8 @@ object TestDriver:
                 println("[更新前のデータ一覧]")
                 //sql = """SELECT * FROM "t_sample" """  // テーブル
                 //sql = """SELECT * FROM "v_sample" """  // ビュー
-                //sql = odbFile.getQueryCommand("q_sample").toString()         // クエリー (問合せ文中にクエリー名が含まれない場合)
-                sql = odbFile.getQueryCommand("q_SAMPLE").expand().toString()  // クエリー (問合せ文中にクエリー名が含まれる場合)
+                //sql = odbFile.getQuery("q_sample").toString()         // クエリー (問合せ文中にクエリー名が含まれない場合)
+                sql = odbFile.getQuery("q_SAMPLE").expand().toString()  // クエリー (問合せ文中にクエリー名が含まれる場合)
                 Using(st.executeQuery(sql)) { records =>
                     while (records.next())
                         println(s"${records.getString("key")}\t${records.getString("value")}")
