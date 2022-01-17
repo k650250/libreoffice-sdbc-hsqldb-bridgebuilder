@@ -20,8 +20,8 @@ try:
                 print(u"[更新前のデータ一覧]")
                 #sql = 'SELECT * FROM "t_sample"'  # テーブル
                 #sql = 'SELECT * FROM "v_sample"'  # ビュー
-                #sql = odbFile.getQueryCommand("q_sample").toString()          # クエリー (問合せ文中にクエリー名が含まれない場合)
-                sql = odbFile.getQueryCommand("q_SAMPLE").expand().toString()  # クエリー (問合せ文中にクエリー名が含まれる場合)
+                #sql = odbFile.getQuery("q_sample").toString()          # クエリー (問合せ文中にクエリー名が含まれない場合)
+                sql = odbFile.getQuery("q_SAMPLE").expand().toString()  # クエリー (問合せ文中にクエリー名が含まれる場合)
                 with closing(st.executeQuery(sql)) as records:
                     while records.next():
                         print(u"{}\t{}".format(records.getString("key"), records.getString("value")))
