@@ -6,13 +6,13 @@ import com.k650250.odb.ODBFile;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-public class QueryCommand {
+public class Query {
     protected String command;
     protected ODBFile odbFile;
 
     /* コンストラクタ
      */
-    QueryCommand(String command, ODBFile odbFile) {
+    Query(String command, ODBFile odbFile) {
         this.command = command;
         this.odbFile = odbFile;
     }
@@ -28,7 +28,7 @@ public class QueryCommand {
     /* インスタンス・メソッド
      * 問合せ文中の一切のクエリー名をそれが指し示す副問合せに置換
      */
-    public QueryCommand expand() {
+    public Query expand() {
         if (this.odbFile.isClosed()) {
             return this;
         }
@@ -59,6 +59,6 @@ public class QueryCommand {
             }
         } while (!newCommand.equals(oldCommand));
 
-        return new QueryCommand(newCommand, this.odbFile);
+        return new Query(newCommand, this.odbFile);
     }
 }
