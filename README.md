@@ -42,7 +42,7 @@ OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋�
 &#9475;&#9495; <b>hsqldb.jar</b><br />
 &#9507; src/<br />
 &#9475;&#9507; ODBFile.java<br />
-&#9475;&#9507; QueryCommand.java<br />
+&#9475;&#9507; Query.java<br />
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.kt<br />
 &#9475;&#9507; TestDriver.kts<br />
@@ -118,7 +118,7 @@ $ java -jar ./lib/odb.jar
 &#9475;&#9495; odb.jar<br />
 &#9507; src/<br />
 &#9475;&#9507; ODBFile.java<br />
-&#9475;&#9507; QueryCommand.java<br />
+&#9475;&#9507; Query.java<br />
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.kt<br />
 &#9475;&#9507; TestDriver.kts<br />
