@@ -2,7 +2,7 @@
 
 package com.k650250.odb;
 
-import com.k650250.odb.QueryCommand;
+import com.k650250.odb.Query;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -272,7 +272,7 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
     /* インスタンス・メソッド
      * クエリーを取得
      */
-    public QueryCommand getQueryCommand(String name) {
+    public Query getQuery(String name) {
         if (this.isClosed()) {
             return null;
         }
@@ -287,7 +287,7 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
             Element query = (Element)queries.item(i);
 
             if (name.equals(query.getAttribute(NAME_ATTR))) {
-                return new QueryCommand(query.getAttribute(COMMAND_ATTR), this);
+                return new Query(query.getAttribute(COMMAND_ATTR), this);
             }
         }
 
