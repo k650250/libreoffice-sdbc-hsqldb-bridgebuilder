@@ -394,6 +394,8 @@ $ java -jar ./lib/odbsql.jar sample.odb user=sa,password= -- init.sql
 1 row updated.
 ```
 
+※ 上記コードの`--`以降の引数が、`./lib/hsqldb.jar`の`org.hsqldb.util.SqlTool`に渡される。
+
 ### 現在のテーブル`t_sample`の中身を全件表示する。
 
 *macOS / Linux:*
