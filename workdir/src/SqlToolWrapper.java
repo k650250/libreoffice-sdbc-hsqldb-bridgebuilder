@@ -11,23 +11,19 @@ import java.util.List;
 
 class SqlToolWrapper {
     public static void main(String[] args) {
-        int status = 0;
+        int status = 1;
 
         try (final ODBFile odbFile = ODBFile.open(args[0])) {
             final ProcessBuilder pb = new ProcessBuilder(buildCommandLine(args, odbFile.toUrl()));
             status = pb.inheritIO().start().waitFor();
         } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
-            status = 1;
         } catch (MalformedURLException e) {
             System.err.println(e.getMessage());
-            status = 1;
         } catch (IOException e) {
             System.err.println(e.getMessage());
-            status = 1;
         } catch (Exception e) {
             e.printStackTrace();
-            status = 1;
         }
         System.exit(status);
     }
