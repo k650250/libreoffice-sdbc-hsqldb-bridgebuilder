@@ -10,23 +10,27 @@ public class Query {
     protected String command;
     protected ODBFile odbFile;
 
-    /* コンストラクタ
+    /**
+     * コンストラクタ
+     * インスタンス化を妨げるprotectedコンストラクタ。
      */
-    Query(String command, ODBFile odbFile) {
+    protected Query(String command, ODBFile odbFile) {
         this.command = command;
         this.odbFile = odbFile;
     }
 
-    /* インスタンス・メソッド
-     * 文字列表現に
+    /**
+     * インスタンス・メソッド
+     * 文字列表現に変換する。
      */
     @Override
     public String toString() {
         return this.command;
     }
 
-    /* インスタンス・メソッド
-     * 問合せ文中の一切のクエリー名をそれが指し示す副問合せに置換
+    /**
+     * インスタンス・メソッド
+     * 問合せ文中の一切のクエリー名をインライン展開（副問合せの形に置換）する
      */
     public Query expand() {
         if (this.odbFile.isClosed()) {
