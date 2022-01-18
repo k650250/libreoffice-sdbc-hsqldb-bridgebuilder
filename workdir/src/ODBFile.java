@@ -39,7 +39,8 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
     protected File dbRootDir = null;
     protected Properties info;
 
-    /* コンストラクタ
+    /**
+     * コンストラクタ
      */
     public ODBFile(File parent, String child, Properties info) {
         super(parent, child);
@@ -70,7 +71,8 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
         this(uri, new Properties());
     }
 
-    /* 静的メソッド
+    /**
+     * 静的メソッド
      * インスタンス化し、直ちにファイルを開く
      */
     public static ODBFile open(File parent, String child, Properties info) throws FileNotFoundException, IOException, Exception {
@@ -110,7 +112,8 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
         return ODBFile.open(uri, new Properties());
     }
 
-    /* インスタンス・メソッド
+    /**
+     * インスタンス・メソッド
      * ファイルを開く
      *
      * 本ファイル内のデータをデータベース・ルート・ディレクトリ内に展開し
@@ -122,6 +125,11 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
     public boolean open() throws FileNotFoundException, IOException, Exception {
         if (!this.isClosed()) {
             return false;
+        }
+        
+        // ファイルの存在確認
+        if (!this.exists()) {
+            throw new FileNotFoundException(this.getName() + " (指定されたファイルが見つかりません。)");
         }
 
         final String PREFIX = this.getName() + ".";
@@ -179,7 +187,8 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
         return true;
     }
 
-    /* インスタンス・メソッド
+    /**
+     * インスタンス・メソッド
      * ファイルを閉じる
      *
      * データベース管理システムを終了し、データを本ファイルに反映した上で
@@ -233,7 +242,8 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
         }
     }
 
-    /* インスタンス・メソッド
+    /**
+     * インスタンス・メソッド
      * データベースURLの文字列に変換
      */
     public String toUrl() throws MalformedURLException {
@@ -268,7 +278,8 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
         );
     }
 
-    /* インスタンス・メソッド
+    /**
+     * インスタンス・メソッド
      * クエリーを取得
      */
     public Query getQuery(String name) {
@@ -293,14 +304,16 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
         return null;
     }
 
-    /* インスタンス・メソッド
+    /**
+     * インスタンス・メソッド
      * 本ファイルが閉じられた状態かを判定
      */
     public boolean isClosed() {
         return this.dbRootDir == null || this.content == null;
     }
 
-    /* インスタンス・メソッド
+    /**
+     * インスタンス・メソッド
      * 本ファイルの情報を、構文解析済み XML 文書オブジェクトの複製ノードとして取得
      */
     public Node getContent() {
