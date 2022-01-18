@@ -11,19 +11,25 @@ import java.util.List;
 
 class SqlToolWrapper {
     public static void main(String[] args) {
+        int status = 0;
+
         try (final ODBFile odbFile = ODBFile.open(args[0])) {
             final ProcessBuilder pb = new ProcessBuilder(buildCommandLine(args, odbFile.toUrl()));
-            pb.inheritIO();
-            pb.start().waitFor();
+            status = pb.inheritIO().start().waitFor();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
+            status = 1;
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
+            status = 1;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
+            status = 1;
         } catch (Exception e) {
             e.printStackTrace();
+            status = 1;
         }
+        System.exit(status);
     }
 
     private static List<String> buildCommandLine(String[] args, String url) {
