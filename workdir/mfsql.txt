@@ -1,0 +1,2 @@
+Main-Class: com.k650250.odb.SqlToolWrapper
+Class-Path: hsqldb.jar odb.jar
