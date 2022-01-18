@@ -43,14 +43,17 @@ OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋�
 &#9507; src/<br />
 &#9475;&#9507; ODBFile.java<br />
 &#9475;&#9507; Query.java<br />
+&#9475;&#9507; SqlToolWrapper.java<br />
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.kt<br />
 &#9475;&#9507; TestDriver.kts<br />
 &#9475;&#9507; TestDriver.py<br />
 &#9475;&#9495; TestDriver.scala<br />
+&#9507; init.sql<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
 &#9507; mfkt.txt<br />
+&#9507; mfsql.txt<br />
 &#9495; sample.odb<br />
 </code></pre>
 
@@ -119,14 +122,17 @@ $ java -jar ./lib/odb.jar
 &#9507; src/<br />
 &#9475;&#9507; ODBFile.java<br />
 &#9475;&#9507; Query.java<br />
+&#9475;&#9507; SqlToolWrapper.java<br />
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.kt<br />
 &#9475;&#9507; TestDriver.kts<br />
 &#9475;&#9507; TestDriver.py<br />
 &#9475;&#9495; TestDriver.scala<br />
+&#9507; init.sql<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
 &#9507; mfkt.txt<br />
+&#9507; mfsql.txt<br />
 &#9495; sample.odb<br />
 </code></pre>
 
