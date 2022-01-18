@@ -80,8 +80,34 @@ javac 17.0.1
 ```
 $ javac -encoding UTF-8 ./src/*.java -d .
 ```
+
+### `./com/`ディレクトリが作成されたことを確認する。
+
+<pre><code>
+&nbsp;./<br />
+&#9507; <b>com/</b><br />
+&#65049;
+&#9507; lib/<br />
+&#9475;&#9507; dummy<br />
+&#9475;&#9495; hsqldb.jar<br />
+&#9507; src/<br />
+&#9475;&#9507; ODBFile.java<br />
+&#9475;&#9507; Query.java<br />
+&#9475;&#9507; SqlToolWrapper.java<br />
+&#9475;&#9507; TestDriver.java<br />
+&#9475;&#9507; TestDriver.kt<br />
+&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.py<br />
+&#9475;&#9495; TestDriver.scala<br />
+&#9507; init.sql<br />
+&#9507; logging.properties<br />
+&#9507; mf.txt<br />
+&#9507; mfkt.txt<br />
+&#9507; mfsql.txt<br />
+&#9495; sample.odb<br />
+</code></pre>
+
 ### テストドライバプログラムを実行する
-`lib`ディレクトリの中に`hsqldb.jar`が置かれていることを確認してから
 
 *macOS / Linux:*
 ```
@@ -93,11 +119,38 @@ $ java -cp ".:./lib/hsqldb.jar" com.k650250.odb.testing.TestDriver
 > java -cp ".;./lib/hsqldb.jar" com.k650250.odb.testing.TestDriver
 ```
 
-### `./lib/odb.jar`の作成
+### `./lib/odb.jar`を作成する。
 
 ```
 $ jar cfm ./lib/odb.jar ./mf.txt com
 ```
+
+### `./lib/odb.jar`が作成されたことを確認する。
+
+<pre><code>
+&nbsp;./<br />
+&#9507; com/<br />
+&#65049;
+&#9507; lib/<br />
+&#9475;&#9507; dummy<br />
+&#9475;&#9507; hsqldb.jar<br />
+&#9475;&#9495; <b>odb.jar</b><br />
+&#9507; src/<br />
+&#9475;&#9507; ODBFile.java<br />
+&#9475;&#9507; Query.java<br />
+&#9475;&#9507; SqlToolWrapper.java<br />
+&#9475;&#9507; TestDriver.java<br />
+&#9475;&#9507; TestDriver.kt<br />
+&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.py<br />
+&#9475;&#9495; TestDriver.scala<br />
+&#9507; init.sql<br />
+&#9507; logging.properties<br />
+&#9507; mf.txt<br />
+&#9507; mfkt.txt<br />
+&#9507; mfsql.txt<br />
+&#9495; sample.odb<br />
+</code></pre>
 
 ### `./lib/odb.jar`の中に埋め込まれたテストドライバプログラムを実行する。
 
@@ -157,6 +210,34 @@ $ kotlinc-jvm -cp ".:./lib/odb.jar" ./src/TestDriver.kt -jvm-target 17 -include-
 ```
 > kotlinc-jvm -cp ".;./lib/odb.jar" ./src/TestDriver.kt -jvm-target 17 -include-runtime -d ./lib/odbkt.jar
 ```
+
+#### `./lib/odbkt.jar`が作成されたことを確認する。
+
+<pre><code>
+&nbsp;./<br />
+&#9507; com/<br />
+&#65049;
+&#9507; lib/<br />
+&#9475;&#9507; dummy<br />
+&#9475;&#9507; hsqldb.jar<br />
+&#9475;&#9507; odb.jar<br />
+&#9475;&#9495; <b>odbkt.jar</b><br />
+&#9507; src/<br />
+&#9475;&#9507; ODBFile.java<br />
+&#9475;&#9507; Query.java<br />
+&#9475;&#9507; SqlToolWrapper.java<br />
+&#9475;&#9507; TestDriver.java<br />
+&#9475;&#9507; TestDriver.kt<br />
+&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.py<br />
+&#9475;&#9495; TestDriver.scala<br />
+&#9507; init.sql<br />
+&#9507; logging.properties<br />
+&#9507; mf.txt<br />
+&#9507; mfkt.txt<br />
+&#9507; mfsql.txt<br />
+&#9495; sample.odb<br />
+</code></pre>
 
 #### `./lib/odb.jar`等を参照させる為、jarファイルのマニフェストを更新する。
 
@@ -233,4 +314,148 @@ $ cs launch scala3 -- -cp "./lib/hsqldb.jar:./lib/odb.jar" ./src/TestDriver.scal
 *Windows:*
 ```
 > cs launch scala3 -- -cp "./lib/hsqldb.jar;./lib/odb.jar" ./src/TestDriver.scala
+```
+
+## SQL
+
+`./lib/hsqldb.jar`の`org.hsqldb.util.SqlTool`を呼び出し、SQLite 3 コマンドラインシェルに似た操作を実現する。
+
+### この時点でのディレクトリ構成
+
+#### `workdir`ディレクトリを作業ディレクトリとする。
+
+<pre><code>
+&nbsp;./<br />
+&#9507; com/<br />
+&#65049;
+&#9507; lib/<br />
+&#9475;&#9507; dummy<br />
+&#9475;&#9507; hsqldb.jar<br />
+&#9475;&#9507; odb.jar<br />
+&#9475;&#9495; odbkt.jar<br />
+&#9507; src/<br />
+&#9475;&#9507; ODBFile.java<br />
+&#9475;&#9507; Query.java<br />
+&#9475;&#9507; SqlToolWrapper.java<br />
+&#9475;&#9507; TestDriver.java<br />
+&#9475;&#9507; TestDriver.kt<br />
+&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.py<br />
+&#9475;&#9495; TestDriver.scala<br />
+&#9507; init.sql<br />
+&#9507; logging.properties<br />
+&#9507; mf.txt<br />
+&#9507; mfkt.txt<br />
+&#9507; mfsql.txt<br />
+&#9495; sample.odb<br />
+</code></pre>
+
+### 準備
+
+#### `./lib/odbsql.jar`を作成する。
+
+```
+$ jar cfm ./lib/odbsql.jar ./mfsql.txt
+```
+
+#### `./lib/odbsql.jar`が作成されたことを確認する。
+
+<pre><code>
+&nbsp;./<br />
+&#9507; com/<br />
+&#65049;
+&#9507; lib/<br />
+&#9475;&#9507; dummy<br />
+&#9475;&#9507; hsqldb.jar<br />
+&#9475;&#9507; odb.jar<br />
+&#9475;&#9507; odbkt.jar<br />
+&#9475;&#9495; <b>odbsql.jar</b><br />
+&#9507; src/<br />
+&#9475;&#9507; ODBFile.java<br />
+&#9475;&#9507; Query.java<br />
+&#9475;&#9507; SqlToolWrapper.java<br />
+&#9475;&#9507; TestDriver.java<br />
+&#9475;&#9507; TestDriver.kt<br />
+&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.py<br />
+&#9475;&#9495; TestDriver.scala<br />
+&#9507; init.sql<br />
+&#9507; logging.properties<br />
+&#9507; mf.txt<br />
+&#9507; mfkt.txt<br />
+&#9507; mfsql.txt<br />
+&#9495; sample.odb<br />
+</code></pre>
+
+### SQL スクリプトファイル`./init.sql`を実行する。
+
+```
+$ java -jar ./lib/odbsql.jar sample.odb user=sa,password= -- init.sql
+1 row updated.
+```
+
+### 現在のテーブル`t_sample`の中身を全件表示する。
+
+*macOS / Linux:*
+```
+$ java -jar ./lib/odbsql.jar sample.odb user=sa,password= -- --sql 'SELECT * FROM "t_sample";'
+key  value
+---  --------
+  1  hogehoge
+```
+
+*Windows:*
+```
+> java -jar ./lib/odbsql.jar sample.odb user=sa,password= -- --sql "SELECT * FROM \"\"t_sample\"\";"
+key  value
+---  --------
+  1  hogehoge
+```
+
+### REPL を起動する。
+
+```
+$ java -jar ./lib/odbsql.jar sample.odb
+```
+
+### SQL で操作する。
+
+#### 全件表示する。
+
+```
+sql> SELECT * FROM "t_sample";
+key  value
+---  --------
+  1  hogehoge
+```
+
+#### データを追加する。
+
+```
+sql> INSERT INTO "t_sample"("value") VALUES('あいうえお');
+1 row updated.
+```
+
+#### データが追加されたかどうか、全件表示して確認する。
+
+```
+sql> SELECT * FROM "t_sample";
+key  value
+---  --------
+  1  hogehoge
+  2  あいうえお
+
+Fetched 2 rows.
+```
+
+#### `COMMIT;`で確定する。
+
+```
+sql> COMMIT;
+```
+
+#### `\q`で終了する。
+
+```
+sql> \q
 ```
