@@ -129,6 +129,7 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
 
         // Zipファイルを読み込む入力ストリームByteArrayOutputStream
         try (final ZipInputStream zis = new ZipInputStream(new FileInputStream(this))) {
+            ZipEntry zipEntry = null;
             final String PREFIX = this.getName() + ".";
             final byte[] buf = new byte[1024];
 
@@ -139,8 +140,6 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
             } else {
                 this.dbRootDir.mkdirs();
             }
-            
-            ZipEntry zipEntry = null;
             // Zipファイル内のファイル・ディレクトリ分ループする
             while ((zipEntry = zis.getNextEntry()) != null) {
                 // 展開先のパスを指定してファイルオブジェクトを生成
