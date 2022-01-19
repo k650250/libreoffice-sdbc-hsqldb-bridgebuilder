@@ -461,3 +461,6 @@ sql> COMMIT;
 ```
 sql> \q
 ```
+
+#### パスワード
+`SET PASSWORD "hogehoge";`で`hogehoge`をパスワードに設定でき、`SET PASSWORD "";`で解除できる。但し、パスワードを設定すると LibreOffice で操作できなくなる。パスワードを設定する際は、誤って LibreOffice で開かないように、対象ファイル名の拡張子を変更（例:`sample.odbx`）しておくことを推奨する。
