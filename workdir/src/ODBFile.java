@@ -205,23 +205,29 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
             tmp = File.createTempFile(this.getName(), null);
             Files.copy(this.toPath(), tmp.toPath(), StandardCopyOption.REPLACE_EXISTING);
             try (final ZipFile zip = new ZipFile(tmp); final ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(this))) {
-                for (Enumeration<? extends ZipEntry> entries = zip.entries(); entries.hasMoreElements();) {
+                for (Enumeration<? extends ZipEntry> entries = zip.entries(); entries.hasMoreElements(); zos.closeEntry()) {
                     ZipEntry entry = entries.nextElement();
-                    zos.putNextEntry(entry);
+                    InputStream is = null;
                     if (entry.isDirectory()) {
+                        zos.putNextEntry(entry);
                         continue;
                     }
                     if (entry.toString().startsWith(this.DB_CLUSTER_DIR_NAME)) {
                         // 更新
 
                         final File f = new File(dbClusterDir, PREFIX + entry.toString().substring(DB_CLUSTER_DIR_NAME_LEN));
-                        this.is2zos(buf, new FileInputStream(f), zos);
+                        try {
+                            is = new FileInputStream(f);
+                        } catch (FileNotFoundException e) {
+                            continue;
+                        }
                     } else {
                         // 従前
 
-                        this.is2zos(buf, zip.getInputStream(entry), zos);
+                        is = zip.getInputStream(entry);
                     }
-                    zos.closeEntry();
+                    zos.putNextEntry(entry);
+                    this.is2zos(buf, is, zos);
                 }
             }
         } finally {
