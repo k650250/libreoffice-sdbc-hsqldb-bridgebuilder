@@ -126,25 +126,20 @@ public class ODBFile extends File implements AutoCloseable, Closeable {
         if (!this.isClosed()) {
             return false;
         }
-        
-        // ファイルの存在確認
-        if (!this.exists()) {
-            throw new FileNotFoundException(this.getName() + " (指定されたファイルが見つかりません。)");
-        }
-
-        final String PREFIX = this.getName() + ".";
-        final byte[] buf = new byte[1024];
-
-        // データベース・ルート・ディレクトリを作成
-        this.dbRootDir = new File(this.info.getProperty("_db_root_dir", ""));
-        if (this.dbRootDir.getName().isEmpty()) {
-            this.dbRootDir = Files.createTempDirectory(PREFIX).toFile();
-        } else {
-            this.dbRootDir.mkdirs();
-        }
 
         // Zipファイルを読み込む入力ストリームByteArrayOutputStream
         try (final ZipInputStream zis = new ZipInputStream(new FileInputStream(this))) {
+            final String PREFIX = this.getName() + ".";
+            final byte[] buf = new byte[1024];
+
+            // データベース・ルート・ディレクトリを作成
+            this.dbRootDir = new File(this.info.getProperty("_db_root_dir", ""));
+            if (this.dbRootDir.getName().isEmpty()) {
+                this.dbRootDir = Files.createTempDirectory(PREFIX).toFile();
+            } else {
+                this.dbRootDir.mkdirs();
+            }
+            
             ZipEntry zipEntry = null;
             // Zipファイル内のファイル・ディレクトリ分ループする
             while ((zipEntry = zis.getNextEntry()) != null) {
