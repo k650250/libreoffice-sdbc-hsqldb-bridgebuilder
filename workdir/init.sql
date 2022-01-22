@@ -1,4 +1,4 @@
--- -*- coding: UTF-8; mode: sql; sql-product: ansi; -*-
+-- -*- coding: utf-8; mode: sql; sql-product: ansi; -*-
 
 DROP SCHEMA PUBLIC CASCADE;
 
