@@ -1,4 +1,4 @@
-// -*- coding: UTF-8; -*-
+// -*- coding: utf-8; -*-
 // kotlin-stdlib-jdk7
 
 import com.k650250.odb.ODBFile
