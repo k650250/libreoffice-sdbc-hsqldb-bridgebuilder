@@ -1,4 +1,4 @@
-// -*- coding: UTF-8; -*-
+// -*- coding: utf-8; -*-
 
 package com.k650250.odb;
 
