@@ -326,6 +326,8 @@ $ cs launch scala3 -- -cp "./lib/hsqldb.jar:./lib/odb.jar" ./src/TestDriver.scal
 
 <pre><code>
 &nbsp;./<br />
+&#9507; .jython_cache/<br />
+&#65049;
 &#9507; com/<br />
 &#65049;
 &#9507; lib/<br />
@@ -362,6 +364,8 @@ $ jar cfm ./lib/odbsql.jar ./mfsql.txt
 
 <pre><code>
 &nbsp;./<br />
+&#9507; .jython_cache/<br />
+&#65049;
 &#9507; com/<br />
 &#65049;
 &#9507; lib/<br />
