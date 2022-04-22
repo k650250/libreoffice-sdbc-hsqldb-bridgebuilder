@@ -394,7 +394,7 @@ $ jar cfm ./lib/odbsql.jar ./mfsql.txt
 ### SQL スクリプトファイル`./init.sql`を実行する。
 
 ```
-$ java -jar ./lib/odbsql.jar sample.odb user=sa,password= -- init.sql
+$ java -jar ./lib/odbsql.jar sample.odb user=sa,password=,charset=utf-8 -- init.sql
 1 row updated.
 ```
 
