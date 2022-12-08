@@ -3,24 +3,39 @@ OpenOffice / LibreOffice Base のデータベースファイル (*.odb) の埋�
 
 例えば、`./sample.odb`の埋め込み HSQLDB にスタンドアロンモードで接続する際、
 
+[Java]
+```Java
+try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.odb;shutdown=true", "sa", "")) {
+    // 諸々の処理
+}
 ```
+[Kotlin]
+```Kotlin
       DriverManager.getConnection("jdbc:hsqldb:file:./sample.odb;shutdown=true", "sa", "").use { conn ->
           // 諸々の処理
       }
 ```
 
-では接続不可能ですが、次のように加筆・修正することによって接続可能となるツールです。
+では接続不可能ですが、当ツールを導入し、次のように修正することによって接続可能となります。
 
-```diff
+[Java]
+```Diff
+- try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.odb;shutdown=true", "sa", "")) {
++ try (ODBFile odbFile = ODBFile.open("sample.odb"); Connection conn = DriverManager.getConnection(odbFile.toUrl(), "sa", "")) {
+    // 処理
+}
+```
+[Kotlin]
+```Diff
 + ODBFile.open("sample.odb").use { odbFile ->
 -     DriverManager.getConnection("jdbc:hsqldb:file:./sample.odb;shutdown=true", "sa", "").use { conn ->
 +     DriverManager.getConnection(odbFile.toUrl(), "sa", "").use { conn ->
-          // 諸々の処理
+          // 処理
       }
 + }
 ```
 
-上記コードは、`workdir/src/TestDriver.kts`を参考。
+上記コードは、Javaは`workdir/src/TestDriver.java`、Kotlinは`workdir/src/TestDriver.kts`を参考。
 
 ## このツールの機能が及ぶ範囲
 ||読|書|
