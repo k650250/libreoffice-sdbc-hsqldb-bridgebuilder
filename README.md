@@ -79,7 +79,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
     - `hsqldb.jar`を<b>`workdir/lib`ディレクトリの中に配置する</b>
 - [download | LibreOffice(リブレオフィス) - 無料で自由に使えるオフィスソフト - OpenOffice.orgの進化系 - Microsoft Officeと高い相互運用性](https://ja.libreoffice.org/download/download/)
 
-以後、HSQLDB のバージョンは`1.8.0.10`、LibreOffice のバージョンは`7.2.5.2`であることを前提とする。
+以後、HSQLDB のバージョンは`1.8.0.10`、LibreOffice のバージョンは`7.4.3.2`であることを前提とする。
 
 ## `./lib/odb.jar`の作成手順
 
@@ -88,7 +88,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
 ### Java コンパイラのバージョン情報を確認する。
 ```
 $ javac -version
-javac 17.0.1
+javac 19.0.1
 ```
 
 ### `./src`ディレクトリの中の`*.java`ソースファイルをコンパイルする。
@@ -210,7 +210,7 @@ $ java -jar ./lib/odb.jar
 
 ```
 $ kotlinc-jvm -version
-info: kotlinc-jvm 1.6.10 (JRE 17.0.1+12-LTS-39)
+info: kotlinc-jvm 1.7.21 (JRE 19.0.1+10-21)
 ```
 
 #### テストドライバプログラムの Kotlin ソースファイル（`./src/TestDriver.kt`）をコンパイルする。
@@ -273,7 +273,7 @@ $ java -jar ./lib/odbkt.jar
 
 ```
 $ kotlin -version
-Kotlin version 1.6.10-release-923 (JRE 17.0.1+12-LTS-39)
+Kotlin version 1.7.21-release-272 (JRE 19.0.1+10-21)
 ```
 
 #### テストドライバプログラムを実行する。
@@ -294,7 +294,7 @@ $ kotlin -howtorun script -cp "./lib/hsqldb.jar:./lib/odb.jar:$(dirname "`which 
 
 ```
 $ jython --version
-Jython 2.7.2
+Jython 2.7.1
 ```
 
 #### テストドライバプログラムを実行する。
@@ -315,8 +315,7 @@ $ jython -J-cp "./lib/hsql.jar:./lib/odb.jar" ./src/TestDriver.py
 
 ```
 $ cs launch scala3 -- -version
-Scala code runner version 3.1.2-RC1-bin-20220106-0b4c6e7-NIGHTLY-git-0b4c6e7 --
-Copyright 2002-2022, LAMP/EPFL
+Scala code runner version 3.2.1 -- Copyright 2002-2022, LAMP/EPFL
 ```
 
 #### テストドライバプログラムを実行する。
@@ -435,8 +434,14 @@ key  value
 
 ### REPL を起動する。
 
+*macOS / Linux:*
 ```
-$ java -jar ./lib/odbsql.jar sample.odb
+$ java -jar ./lib/odbsql.jar sample.odb user=sa,password=,charset=utf-8
+```
+
+*Windows:*
+```
+> java -jar ./lib/odbsql.jar sample.odb user=sa,password=,charset=cp932
 ```
 
 ### SQL で操作する。
