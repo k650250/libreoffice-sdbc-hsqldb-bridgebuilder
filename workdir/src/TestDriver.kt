@@ -6,6 +6,7 @@ import com.k650250.odb.ODBFile
 import java.sql.DriverManager
 import java.sql.ResultSet
 import java.sql.SQLException
+import java.util.Scanner
 
 fun main() {
     // ロギングの環境設定ファイル (※ HSQLDB-1.8.0.10 では使用しない)
@@ -34,9 +35,11 @@ fun main() {
             // データ挿入
             sql = """INSERT INTO "t_sample"("value") VALUES(?)"""
             val prep = conn.prepareStatement(sql)
+            val sc = Scanner(System.`in`, System.getProperty("native.encoding"))
             print("追加データを入力してください: ")
-            prep.setString(1, readLine())
+            prep.setString(1, sc.nextLine())
             prep.executeUpdate()
+            sc.close()
             prep.close()
 
             println("[更新後のデータ一覧]")
@@ -46,7 +49,7 @@ fun main() {
                 println("${records.getString("key")}\t${records.getString("value")}")
             }
             records.close()
-            
+
             st.close()
             conn.close()
         }
