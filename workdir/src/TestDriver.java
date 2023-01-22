@@ -18,7 +18,6 @@ class TestDriver {
     public static void main(String[] args) {
         // ロギングの環境設定ファイル (※ HSQLDB-1.8.0.10 では使用しない)
         //System.setProperty("java.util.logging.config.file", "logging.properties");
-        
         try {
             Class.forName("org.hsqldb.jdbcDriver");
         } catch (ClassNotFoundException e) {
@@ -27,8 +26,8 @@ class TestDriver {
         }
 
         try (final ODBFile odbFile = ODBFile.open("sample.odb");
-            final Connection conn = DriverManager.getConnection(odbFile.toUrl(), "sa", "");
-            final Statement st = conn.createStatement()) {
+            final Connection con = DriverManager.getConnection(odbFile.toUrl(), "sa", "");
+            final Statement st = con.createStatement()) {
 
             String sql;
 
@@ -45,11 +44,11 @@ class TestDriver {
 
             // データ挿入
             sql = "INSERT INTO \"t_sample\"(\"value\") VALUES(?)";
-            try (final PreparedStatement prep = conn.prepareStatement(sql);
-                final Scanner scan = new Scanner(System.in)) {
-                
+            try (final PreparedStatement prep = con.prepareStatement(sql);
+                final Scanner sc = new Scanner(System.in, System.getProperty("native.encoding"))) {
+
                 System.out.print("追加データを入力してください: ");
-                prep.setString(1, scan.nextLine());
+                prep.setString(1, sc.nextLine());
                 prep.executeUpdate();
             }
 
