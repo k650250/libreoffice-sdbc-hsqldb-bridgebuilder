@@ -16,8 +16,8 @@ fun main() {
         Class.forName("org.hsqldb.jdbcDriver")
 
         ODBFile.open("sample.odb").use { odbFile ->
-            val conn = DriverManager.getConnection(odbFile.toUrl(), "sa", "")
-            val st = conn.createStatement();
+            val con = DriverManager.getConnection(odbFile.toUrl(), "sa", "")
+            val st = con.createStatement();
             var sql: String
             var records: ResultSet
 
@@ -34,7 +34,7 @@ fun main() {
 
             // データ挿入
             sql = """INSERT INTO "t_sample"("value") VALUES(?)"""
-            val prep = conn.prepareStatement(sql)
+            val prep = con.prepareStatement(sql)
             val sc = Scanner(System.`in`, System.getProperty("native.encoding"))
             print("追加データを入力してください: ")
             prep.setString(1, sc.nextLine())
@@ -51,7 +51,7 @@ fun main() {
             records.close()
 
             st.close()
-            conn.close()
+            con.close()
         }
     } catch (e: ClassNotFoundException) {
         e.printStackTrace()
