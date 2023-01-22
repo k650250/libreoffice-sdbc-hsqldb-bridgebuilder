@@ -280,12 +280,12 @@ Kotlin version 1.7.21-release-272 (JRE 19.0.1+10-21)
 
 *macOS / Linux:*
 ```
-$ kotlin -howtorun script -cp "./lib/hsqldb.jar:./lib/odb.jar:$(dirname "`which kotlin`")/../lib/kotlin-stdlib-jdk7.jar" ./src/TestDriver.kts
+$ kotlinc-jvm -script "./src/TestDriver.main.kts" -cp "./lib/odb.jar:./lib/hsqldb.jar"
 ```
 
 *Windows:*
 ```
-> kotlin -howtorun script -cp "./lib/hsqldb.jar;./lib/odb.jar;!_KOTLIN_HOME!/lib/kotlin-stdlib-jdk7.jar" ./src/TestDriver.kts
+> kotlinc-jvm -script "./src/TestDriver.main.kts" -cp "./lib/odb.jar;./lib/hsqldb.jar"
 ```
 
 ### Jython/JPython (`*.py`) の場合
