@@ -14,8 +14,8 @@ try {
     Class.forName("org.hsqldb.jdbcDriver")
 
     ODBFile.open("sample.odb").use { odbFile ->
-        DriverManager.getConnection(odbFile.toUrl(), "sa", "").use { conn ->
-            conn.createStatement().use { st ->
+        DriverManager.getConnection(odbFile.toUrl(), "sa", "").use { con ->
+            con.createStatement().use { st ->
                 var sql: String
 
                 println("[更新前のデータ一覧]")
@@ -31,7 +31,7 @@ try {
 
                 // データ挿入
                 sql = """INSERT INTO "t_sample"("value") VALUES(?)"""
-                conn.prepareStatement(sql).use { prep ->
+                con.prepareStatement(sql).use { prep ->
                     Scanner(System.`in`, System.getProperty("native.encoding")).use { sc ->
                         print("追加データを入力してください: ")
                         prep.setString(1, sc.nextLine())
