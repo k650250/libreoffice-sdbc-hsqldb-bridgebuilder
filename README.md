@@ -218,12 +218,12 @@ info: kotlinc-jvm 1.7.21 (JRE 19.0.1+10-21)
 
 *macOS / Linux:*
 ```
-$ kotlinc-jvm -cp "./lib/odb.jar" ./src/TestDriver.kt -jvm-target 18 -include-runtime -d ./lib/odbkt.jar
+$ kotlinc-jvm -cp "./lib/odb.jar" "./src/TestDriver.kt" -jvm-target "18" -include-runtime -d "./lib/odbkt.jar"
 ```
 
 *Windows:*
 ```
-> kotlinc-jvm -cp "./lib/odb.jar" ./src/TestDriver.kt -jvm-target 18 -include-runtime -d ./lib/odbkt.jar
+> kotlinc-jvm -cp "./lib/odb.jar" "./src/TestDriver.kt" -jvm-target "18" -include-runtime -d "./lib/odbkt.jar"
 ```
 
 #### `./lib/odbkt.jar`が作成されたことを確認する。
