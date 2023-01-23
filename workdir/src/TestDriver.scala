@@ -4,6 +4,7 @@ package com.k650250.odb.testing.scala
 
 import com.k650250.odb.ODBFile
 import java.sql.{ DriverManager, SQLException }
+import java.util.Scanner
 import scala.util.Using
 
 object TestDriver:
@@ -14,8 +15,8 @@ object TestDriver:
 
             Using.Manager { use =>
                 val odbFile = use(ODBFile.open("sample.odb"))
-                val conn = use(DriverManager.getConnection(odbFile.toUrl(), "sa", ""))
-                val st = use(conn.createStatement())
+                val con = use(DriverManager.getConnection(odbFile.toUrl(), "sa", ""))
+                val st = use(con.createStatement())
 
                 var sql: String = null
 
@@ -32,9 +33,11 @@ object TestDriver:
 
                 // データ挿入
                 sql = """INSERT INTO "t_sample"("value") VALUES(?)"""
-                Using(conn.prepareStatement(sql)) { prep =>
+                Using.Manager { use =>
+                    val prep = use(con.prepareStatement(sql))
+                    val sc = use(Scanner(System.in, System.getProperty("native.encoding")))
                     print("追加データを入力してください: ")
-                    prep.setString(1, io.StdIn.readLine())
+                    prep.setString(1, sc.nextLine())
                     prep.executeUpdate()
                 }
 
@@ -64,3 +67,4 @@ object TestDriver:
         end try
     end test
 end TestDriver
+
