@@ -230,7 +230,7 @@ Jython 2.7.1
 
 *macOS / Linux:*
 ```
-$ jython -J-cp "./lib/hsql.jar./lib/odb.jar" "./src/TestDriver.py"
+$ jython -J-cp "./lib/hsql.jar:./lib/odb.jar" "./src/TestDriver.py"
 ```
 
 *Windows:*
