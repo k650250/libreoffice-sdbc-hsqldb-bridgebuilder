@@ -9,7 +9,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
     // 諸々の処理
 }
 ```
-[Kotlin]
+[Kotlinscript]
 ```Kotlin
       DriverManager.getConnection("jdbc:hsqldb:file:./sample.odb;shutdown=true", "sa", "").use { conn ->
           // 諸々の処理
@@ -25,7 +25,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
     // 処理
 }
 ```
-[Kotlin]
+[Kotlinscript]
 ```Diff
 + ODBFile.open("sample.odb").use { odbFile ->
 -     DriverManager.getConnection("jdbc:hsqldb:file:./sample.odb;shutdown=true", "sa", "").use { conn ->
@@ -173,7 +173,7 @@ $ jar cfm ./lib/odb.jar ./mf.txt com
 $ java -jar ./lib/odb.jar
 ```
 
-## 他のJVM言語（例: Kotlin、Jython、Scala）で`./lib/odb.jar`を参照する
+## 他のJVM言語（例: Kotlinscript、Jython、Scala）のスクリプトで`./lib/odb.jar`を参照する
 
 ### この時点でのディレクトリ構成
 
@@ -199,75 +199,11 @@ $ java -jar ./lib/odb.jar
 &#9507; init.sql<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
-&#9507; mfkt.txt<br />
 &#9507; mfsql.txt<br />
 &#9495; sample.odb<br />
 </code></pre>
 
-### Kotlin (`*.kt`) の場合
-
-#### Kotlin コンパイラのバージョン情報を確認する。
-
-```
-$ kotlinc-jvm -version
-info: kotlinc-jvm 1.7.21 (JRE 19.0.1+10-21)
-```
-
-#### テストドライバプログラムの Kotlin ソースファイル（`./src/TestDriver.kt`）をコンパイルする。
-`./lib/odb.jar`が置かれていることを確認してから
-
-*macOS / Linux:*
-```
-$ kotlinc-jvm -cp "./lib/odb.jar" "./src/TestDriver.kt" -jvm-target "18" -include-runtime -d "./lib/odbkt.jar"
-```
-
-*Windows:*
-```
-> kotlinc-jvm -cp "./lib/odb.jar" "./src/TestDriver.kt" -jvm-target "18" -include-runtime -d "./lib/odbkt.jar"
-```
-
-#### `./lib/odbkt.jar`が作成されたことを確認する。
-
-<pre><code>
-&nbsp;./<br />
-&#9507; com/<br />
-&#65049;
-&#9507; lib/<br />
-&#9475;&#9507; dummy<br />
-&#9475;&#9507; hsqldb.jar<br />
-&#9475;&#9507; odb.jar<br />
-&#9475;&#9495; <b>odbkt.jar</b><br />
-&#9507; src/<br />
-&#9475;&#9507; ODBFile.java<br />
-&#9475;&#9507; Query.java<br />
-&#9475;&#9507; SqlToolWrapper.java<br />
-&#9475;&#9507; TestDriver.java<br />
-&#9475;&#9507; TestDriver.kt<br />
-&#9475;&#9507; TestDriver.kts<br />
-&#9475;&#9507; TestDriver.py<br />
-&#9475;&#9495; TestDriver.scala<br />
-&#9507; init.sql<br />
-&#9507; logging.properties<br />
-&#9507; mf.txt<br />
-&#9507; mfkt.txt<br />
-&#9507; mfsql.txt<br />
-&#9495; sample.odb<br />
-</code></pre>
-
-#### `./lib/odb.jar`等を参照させる為、jarファイルのマニフェストを更新する。
-
-```
-$ jar uvfm ./lib/odbkt.jar ./mfkt.txt
-マニフェストが更新されました
-```
-
-#### `./lib/odbkt.jar`の中に埋め込まれたテストドライバプログラムを実行する。
-
-```
-$ java -jar ./lib/odbkt.jar
-```
-
-### Kotlin スクリプト (`*.kts`) の場合
+### Kotlinscript (`*.kts`) の場合
 
 #### Kotlin のバージョン情報を確認する。
 
@@ -361,7 +297,6 @@ $ cs launch scala3 -- -cp "./lib/hsqldb.jar:./lib/odb.jar" ./src/TestDriver.scal
 &#9507; init.sql<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
-&#9507; mfkt.txt<br />
 &#9507; mfsql.txt<br />
 &#9495; sample.odb<br />
 </code></pre>
@@ -400,7 +335,6 @@ $ jar cfm ./lib/odbsql.jar ./mfsql.txt
 &#9507; init.sql<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
-&#9507; mfkt.txt<br />
 &#9507; mfsql.txt<br />
 &#9495; sample.odb<br />
 </code></pre>
