@@ -60,14 +60,12 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
 &#9475;&#9507; Query.java<br />
 &#9475;&#9507; SqlToolWrapper.java<br />
 &#9475;&#9507; TestDriver.java<br />
-&#9475;&#9507; TestDriver.kt<br />
-&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.main.kts<br />
 &#9475;&#9507; TestDriver.py<br />
 &#9475;&#9495; TestDriver.scala<br />
 &#9507; init.sql<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
-&#9507; mfkt.txt<br />
 &#9507; mfsql.txt<br />
 &#9495; sample.odb<br />
 </code></pre>
@@ -110,14 +108,12 @@ $ javac -encoding UTF-8 ./src/*.java -d .
 &#9475;&#9507; Query.java<br />
 &#9475;&#9507; SqlToolWrapper.java<br />
 &#9475;&#9507; TestDriver.java<br />
-&#9475;&#9507; TestDriver.kt<br />
-&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.main.kts<br />
 &#9475;&#9507; TestDriver.py<br />
 &#9475;&#9495; TestDriver.scala<br />
 &#9507; init.sql<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
-&#9507; mfkt.txt<br />
 &#9507; mfsql.txt<br />
 &#9495; sample.odb<br />
 </code></pre>
@@ -155,14 +151,12 @@ $ jar cfm ./lib/odb.jar ./mf.txt com
 &#9475;&#9507; Query.java<br />
 &#9475;&#9507; SqlToolWrapper.java<br />
 &#9475;&#9507; TestDriver.java<br />
-&#9475;&#9507; TestDriver.kt<br />
-&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.main.kts<br />
 &#9475;&#9507; TestDriver.py<br />
 &#9475;&#9495; TestDriver.scala<br />
 &#9507; init.sql<br />
 &#9507; logging.properties<br />
 &#9507; mf.txt<br />
-&#9507; mfkt.txt<br />
 &#9507; mfsql.txt<br />
 &#9495; sample.odb<br />
 </code></pre>
@@ -173,7 +167,7 @@ $ jar cfm ./lib/odb.jar ./mf.txt com
 $ java -jar ./lib/odb.jar
 ```
 
-## 他のJVM言語（例: Kotlinscript、Jython、Scala）のスクリプトで`./lib/odb.jar`を参照する
+## 他のJVM言語（例: Kotlin、Jython、Scala）のスクリプトで`./lib/odb.jar`を参照する
 
 ### この時点でのディレクトリ構成
 
@@ -192,8 +186,7 @@ $ java -jar ./lib/odb.jar
 &#9475;&#9507; Query.java<br />
 &#9475;&#9507; SqlToolWrapper.java<br />
 &#9475;&#9507; TestDriver.java<br />
-&#9475;&#9507; TestDriver.kt<br />
-&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.main.kts<br />
 &#9475;&#9507; TestDriver.py<br />
 &#9475;&#9495; TestDriver.scala<br />
 &#9507; init.sql<br />
@@ -290,8 +283,7 @@ $ cs launch scala3 -- -cp "./lib/hsqldb.jar:./lib/odb.jar" ./src/TestDriver.scal
 &#9475;&#9507; Query.java<br />
 &#9475;&#9507; SqlToolWrapper.java<br />
 &#9475;&#9507; TestDriver.java<br />
-&#9475;&#9507; TestDriver.kt<br />
-&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.main.kts<br />
 &#9475;&#9507; TestDriver.py<br />
 &#9475;&#9495; TestDriver.scala<br />
 &#9507; init.sql<br />
@@ -328,8 +320,7 @@ $ jar cfm ./lib/odbsql.jar ./mfsql.txt
 &#9475;&#9507; Query.java<br />
 &#9475;&#9507; SqlToolWrapper.java<br />
 &#9475;&#9507; TestDriver.java<br />
-&#9475;&#9507; TestDriver.kt<br />
-&#9475;&#9507; TestDriver.kts<br />
+&#9475;&#9507; TestDriver.main.kts<br />
 &#9475;&#9507; TestDriver.py<br />
 &#9475;&#9495; TestDriver.scala<br />
 &#9507; init.sql<br />
