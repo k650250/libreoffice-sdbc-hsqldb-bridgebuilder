@@ -209,12 +209,12 @@ Kotlin version 1.7.21-release-272 (JRE 19.0.1+10-21)
 
 *macOS / Linux:*
 ```
-$ kotlinc-jvm -script "./src/TestDriver.main.kts" -cp "./lib/odb.jar:./lib/hsqldb.jar"
+$ kotlinc-jvm -script "./src/TestDriver.main.kts"
 ```
 
 *Windows:*
 ```
-> kotlinc-jvm -script "./src/TestDriver.main.kts" -cp "./lib/odb.jar;./lib/hsqldb.jar"
+> kotlinc-jvm -script "./src/TestDriver.main.kts"
 ```
 
 ### Jython/JPython (`*.py`) の場合
