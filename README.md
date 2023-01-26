@@ -49,7 +49,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
 <details>
 <summary>macOS / Linux</summary>
 
-1. コンソール（ターミナル）を起動しする
+1. コンソール（ターミナル）を開く
 2. ホームディレクトリ（`~`）下の任意の空のディレクトリを、作業ディレクトリとする
 3. コンソールに、次の内容を貼り付け、エンターキーを押す
 
@@ -62,7 +62,7 @@ mkdir -p './tmp' ; cd './tmp' ; curl -sL 'https://github.com/k650250/libreoffice
 <summary>Windows</summary>
 
 1. エクスプローラーを開く
-2. 「ドキュメント」フォルダ下の任意の場所を開く
+2. 「ドキュメント」フォルダ下の任意の空のフォルダを開く
 3. アドレスバーに`powershell`と入力し、エンターキーを押す
 4. Windows PowerShell ウィンドウに、次の内容を貼り付け、エンターキーを押す
 
