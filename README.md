@@ -49,14 +49,12 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
 <details>
 <summary>macOS / Linux</summary>
 
-1. `workdir`ディレクトリをダウンロード
-2. `workdir/lib`ディレクトリの中に`hsqldb.jar`を配置（詳細は後述）
-3. コンソール（ターミナル）を起動しする
-4. `workdir`ディレクトリを作業ディレクトリとする
-5. コンソールに、次の内容を貼り付け、エンターキーを押す
+1. コンソール（ターミナル）を起動しする
+2. ホームディレクトリ（`~`）下の任意の空のディレクトリを、作業ディレクトリとする
+3. コンソールに、次の内容を貼り付け、エンターキーを押す
 
 ```bash
-javac -encoding "UTF-8" "./src/*.java" -d "." ; jar -cfm "./lib/odb.jar" "./mf.txt" "com" ; jar -cfm "./lib/odbsql.jar" "./mfsql.txt"
+mkdir -p './tmp' ; cd './tmp' ; curl -sL 'https://github.com/k650250/libreoffice-sdbc-hsqldb-bridgebuilder/archive/refs/heads/main.zip' | jar -x 'libreoffice-sdbc-hsqldb-bridgebuilder-main/workdir/' ; curl -sL 'https://ja.osdn.net/frs/g_redir.php?m=jaist&f=hsqldb%2Fhsqldb%2Fhsqldb_1_8_0%2Fhsqldb_1_8_0_10.zip' | jar -x 'hsqldb/lib/hsqldb.jar' ; cd '../' ; mv -f ./tmp/libreoffice-sdbc-hsqldb-bridgebuilder-main/workdir/* '.' ; mv -f './tmp/hsqldb/lib/hsqldb.jar' './lib/.' ; rm -rf 'tmp' ; javac -encoding 'UTF-8' ./src/*.java -d '.' ; jar -cfm './lib/odb.jar' './mf.txt' 'com' ; jar -cfm './lib/odbsql.jar' './mfsql.txt' ; ls
 ```
 
 </details>
