@@ -45,6 +45,14 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
 |フォーム|&#10006;|&#10006;|
 |レポート|&#10006;|&#10006;|
 
+## コンパイラ／インタプリタ
+- 必須
+  - javac 19.0.1
+- 任意：テストドライバプログラム実行用
+  - kotlinc-jvm 1.7.21
+  - Jython 2.7.1
+  - Scala 3.2.1
+
 ## ダウンロードとビルド
 <details>
 <summary>macOS / Linux</summary>
