@@ -118,6 +118,12 @@ New-Item -Name "tmp" -ItemType "directory" -Force > $null ; Invoke-WebRequest -U
 java -jar "./lib/odb.jar"
 ```
 
+#### Kotlinscript (`*.kts`) で記述されたテストドライバプログラムを実行する
+
+```bash
+kotlinc-jvm -cp "./lib/hsqldb.jar;./lib/odb.jar" -script "./src/TestDriver.main.kts"
+```
+
 #### Scala (`*.scala`) で記述されたテストドライバプログラムを実行する
 
 ```bash
