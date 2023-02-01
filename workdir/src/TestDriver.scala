@@ -36,7 +36,7 @@ object TestDriver:
                 Using.Manager { use =>
                     val prep = use(con.prepareStatement(sql))
                     val sc = use(Scanner(System.in, System.getProperty("native.encoding")))
-                    print("追加データを入力してください: ")
+                    println("追加データを入力してください。")
                     prep.setString(1, sc.nextLine())
                     prep.executeUpdate()
                 }
