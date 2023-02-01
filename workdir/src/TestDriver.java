@@ -47,7 +47,7 @@ class TestDriver {
             try (final PreparedStatement prep = con.prepareStatement(sql);
                 final Scanner sc = new Scanner(System.in, System.getProperty("native.encoding"))) {
 
-                System.out.print("追加データを入力してください: ");
+                System.out.print("追加データを入力してください。");
                 prep.setString(1, sc.nextLine());
                 prep.executeUpdate();
             }
