@@ -33,7 +33,7 @@ try {
                 sql = """INSERT INTO "t_sample"("value") VALUES(?)"""
                 con.prepareStatement(sql).use { prep ->
                     Scanner(System.`in`, System.getProperty("native.encoding")).use { sc ->
-                        print("追加データを入力してください: ")
+                        println("追加データを入力してください。")
                         prep.setString(1, sc.nextLine())
                         prep.executeUpdate()
                     }
