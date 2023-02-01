@@ -118,22 +118,10 @@ New-Item -Name "tmp" -ItemType "directory" -Force > $null ; Invoke-WebRequest -U
 java -jar "./lib/odb.jar"
 ```
 
-#### Kotlinscript (`*.kts`) で記述されたテストドライバプログラムを実行する
-
-```bash
-kotlinc-jvm -script "./src/TestDriver.main.kts"
-```
-
-#### Jython/JPython (`*.py`) で記述されたテストドライバプログラムを実行する
-
-```bash
-jython -J-cp "./lib/hsql.jar:./lib/odb.jar" "./src/TestDriver.py"
-```
-
 #### Scala (`*.scala`) で記述されたテストドライバプログラムを実行する
 
 ```bash
-cs launch scala3 -- -cp "./lib/hsqldb.jar:./lib/odb.jar" ./src/TestDriver.scala
+scala -cp "./lib/hsqldb.jar:./lib/odb.jar" ./src/TestDriver.scala
 ```
 
 ### SQL コマンドラインシェルの動作確認
@@ -173,7 +161,7 @@ java -jar "./lib/odb.jar"
 #### Kotlinscript (`*.kts`) で記述されたテストドライバプログラムを実行する
 
 ```powershell
-kotlinc-jvm -script "./src/TestDriver.main.kts"
+kotlinc-jvm -cp '"./lib/hsqldb.jar;./lib/odb.jar"' -script "./src/TestDriver.main.kts"
 ```
 
 #### Jython/JPython (`*.py`) で記述されたテストドライバプログラムを実行する
