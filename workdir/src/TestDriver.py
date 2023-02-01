@@ -30,7 +30,7 @@ try:
                 sql = 'INSERT INTO "t_sample"("value") VALUES(?)'
                 with closing(con.prepareStatement(sql)) as prep:
                     with closing(Scanner(eval("System.in"), System.getProperty("native.encoding"))) as sc:
-                        System.out.print(u"追加データを入力してください: ")
+                        System.out.println(u"追加データを入力してください。")
                         prep.setString(1, sc.nextLine())
                         prep.executeUpdate()
 
