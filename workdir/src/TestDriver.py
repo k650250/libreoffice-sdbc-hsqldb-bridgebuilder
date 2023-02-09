@@ -15,20 +15,28 @@ import traceback
 # ロギングの環境設定ファイル (※ HSQLDB-1.8.0.10 では使用しない)
 #System.setProperty("java.util.logging.config.file", "logging.properties")
 
-try:
-    props = Properties()
-    props.setProperty("user", "sa")
-    props.setProperty("password", "")
+def add_classpath():
+    """`-J-cp`オプションが存在しない処理系への対処"""
     libdir = os.path.join(os.path.dirname(__file__), "..", "lib")
-    with closing(URLClassLoader(jarray.array([
+    urls = jarray.array([
         File(os.path.join(libdir, "odb.jar")).toURI().toURL(),
         File(os.path.join(libdir, "hsqldb.jar")).toURI().toURL()
-    ], URL))) as cl, \
-    closing(Class.forName("com.k650250.odb.ODBFile", True, cl)
-        .open("sample.odb")) as odbFile, \
-    closing(Class.forName("org.hsqldb.jdbcDriver", True, cl)
-        .newInstance().connect(odbFile.toUrl(), props)) as con, \
-    closing(con.createStatement()) as st:
+    ], URL)
+    cl = URLClassLoader(urls)
+    return cl
+
+info = Properties()
+info.setProperty("user", "sa")
+info.setProperty("password", "")
+
+try:
+    with closing(add_classpath()) as cl, \
+        closing(Class.forName("com.k650250.odb.ODBFile", True, cl)
+            .open("sample.odb")) as odbFile, \
+        closing(Class.forName("org.hsqldb.jdbcDriver", True, cl)
+            .newInstance().connect(odbFile.toUrl(), info)) as con, \
+        closing(con.createStatement()) as st:
+
         System.out.println(u"[更新前のデータ一覧]")
         #sql = 'SELECT * FROM "t_sample"'  # テーブル
         #sql = 'SELECT * FROM "v_sample"'  # ビュー
