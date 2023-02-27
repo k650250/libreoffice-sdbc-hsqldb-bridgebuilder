@@ -51,6 +51,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
 - 任意：テストドライバプログラム実行用
   - kotlinc-jvm 1.7.21
   - Jython 2.7.1
+  - JRuby 9.1.17.0 (2.3.3)
   - Scala 3.2.1
 
 ## ダウンロードとビルド
@@ -96,6 +97,7 @@ New-Item -Name "tmp" -ItemType "directory" -Force > $null ; Invoke-WebRequest -U
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.main.kts<br />
 &#9475;&#9507; TestDriver.py<br />
+&#9475;&#9507; TestDriver.rb<br />
 &#9475;&#9495; TestDriver.scala<br />
 &#9507; init.sql<br />
 &#9507; logging.properties<br />
@@ -128,6 +130,12 @@ kotlinc-jvm -cp "./lib/hsqldb.jar:./lib/odb.jar" -script "./src/TestDriver.main.
 
 ```powershell
 jython "./src/TestDriver.py"
+```
+
+#### JRuby (`*.rb`) で記述されたテストドライバプログラムを実行する
+
+```powershell
+jruby -J-cp "./lib/hsqldb.jar;./lib/odb.jar" "-J-Djdbc.drivers=org.hsqldb.jdbcDriver" "./src/TestDriver.rb"
 ```
 
 #### Scala (`*.scala`) で記述されたテストドライバプログラムを実行する
