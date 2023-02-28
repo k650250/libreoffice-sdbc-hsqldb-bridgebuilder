@@ -1,4 +1,4 @@
-#! jython
+#!/usr/bin/env jython
 # -*- coding: utf-8; -*-
 
 from contextlib import closing
@@ -63,12 +63,12 @@ try:
 
 except ClassNotFoundException as e:
     e.printStackTrace()
-    System.err.println(u"org.hsqldb.jdbcDriver が見つかりません。")
+    System.err.println(u"考えられる原因:")
+    System.err.println(u"- hsqldb.jar がクラス・パス指定されていない")
+    System.err.println(u"- odb.jar がクラス・パス指定されていない")
 except SQLException as e:
     e.printStackTrace()
     System.err.println(u"考えられる原因:")
     System.err.println(u"- hsqldb.jar が正常に読み込まれていない")
     System.err.println(u"- このデータベースを別のプロセスが使用中")
     System.err.println(u"- 問合せ文中にクエリー名が含まれる")
-except Exception as e:
-    traceback.print_exc(file=sys.stderr)
