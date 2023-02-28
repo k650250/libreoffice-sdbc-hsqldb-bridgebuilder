@@ -132,12 +132,6 @@ kotlinc-jvm -cp "./lib/hsqldb.jar:./lib/odb.jar" -script "./src/TestDriver.main.
 jython "./src/TestDriver.py"
 ```
 
-#### JRuby (`*.rb`) で記述されたテストドライバプログラムを実行する
-
-```powershell
-jruby -J-cp "./lib/hsqldb.jar;./lib/odb.jar" "-J-Djdbc.drivers=org.hsqldb.jdbcDriver" "./src/TestDriver.rb"
-```
-
 #### Scala (`*.scala`) で記述されたテストドライバプログラムを実行する
 
 ```bash
@@ -188,6 +182,12 @@ kotlinc-jvm -cp '"./lib/hsqldb.jar;./lib/odb.jar"' -script "./src/TestDriver.mai
 
 ```powershell
 jython "-Dfile.encoding=MS932" "./src/TestDriver.py"
+```
+
+#### JRuby (`*.rb`) で記述されたテストドライバプログラムを実行する
+
+```powershell
+jruby -J-cp "./lib/hsqldb.jar;./lib/odb.jar" "-J-Djdbc.drivers=org.hsqldb.jdbcDriver" "./src/TestDriver.rb"
 ```
 
 #### Scala (`*.scala`) で記述されたテストドライバプログラムを実行する
