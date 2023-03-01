@@ -20,7 +20,8 @@ ensure
 end
 
 begin
-    #java.lang.Class.forName "org.hsqldb.jdbcDriver"
+    loader = java.lang.Thread.current_thread.getContextClassLoader
+    java.lang.Class.forName("org.hsqldb.jdbcDriver", true, loader)
 
     closing(ODBFile.open("sample.odb")) do |odbFile|
         closing(DriverManager.getConnection(odbFile.toUrl, "sa", "")) do |con|
