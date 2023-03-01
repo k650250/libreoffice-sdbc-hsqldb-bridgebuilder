@@ -135,7 +135,7 @@ jython "./src/TestDriver.py"
 #### JRuby (`*.rb`) で記述されたテストドライバプログラムを実行する
 
 ```bash
-jruby -J-cp "./lib/hsqldb.jar:./lib/odb.jar" "-J-Djdbc.drivers=org.hsqldb.jdbcDriver" "./src/TestDriver.rb"
+jruby -J-cp "./lib/hsqldb.jar:./lib/odb.jar" "./src/TestDriver.rb"
 ```
 
 #### Scala (`*.scala`) で記述されたテストドライバプログラムを実行する
@@ -193,7 +193,7 @@ jython "-Dfile.encoding=MS932" "./src/TestDriver.py"
 #### JRuby (`*.rb`) で記述されたテストドライバプログラムを実行する
 
 ```powershell
-jruby -J-cp "./lib/hsqldb.jar;./lib/odb.jar" "-J-Djdbc.drivers=org.hsqldb.jdbcDriver" "./src/TestDriver.rb"
+jruby -J-cp "./lib/hsqldb.jar;./lib/odb.jar" "./src/TestDriver.rb"
 ```
 
 #### Scala (`*.scala`) で記述されたテストドライバプログラムを実行する
