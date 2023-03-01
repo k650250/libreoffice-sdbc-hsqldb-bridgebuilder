@@ -22,18 +22,18 @@ def add_classpath():
         File(os.path.join(libdir, "odb.jar")).toURI().toURL(),
         File(os.path.join(libdir, "hsqldb.jar")).toURI().toURL()
     ], URL)
-    cl = URLClassLoader(urls)
-    return cl
+    loader = URLClassLoader(urls)
+    return loader
 
 info = Properties()
 info.setProperty("user", "sa")
 info.setProperty("password", "")
 
 try:
-    with closing(add_classpath()) as cl, \
-        closing(Class.forName("com.k650250.odb.ODBFile", True, cl)
+    with closing(add_classpath()) as loader, \
+        closing(Class.forName("com.k650250.odb.ODBFile", True, loader)
             .open("sample.odb")) as odbFile, \
-        closing(Class.forName("org.hsqldb.jdbcDriver", True, cl)
+        closing(Class.forName("org.hsqldb.jdbcDriver", True, loader)
             .newInstance().connect(odbFile.toUrl(), info)) as con, \
         closing(con.createStatement()) as st:
 
