@@ -49,6 +49,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
 - 必須
   - javac 19.0.1
 - 任意：テストドライバプログラム実行用
+  - Groovy 4.0.8
   - kotlinc-jvm 1.7.21
   - Jython 2.7.1
   - JRuby 9.1.17.0 (2.3.3)
