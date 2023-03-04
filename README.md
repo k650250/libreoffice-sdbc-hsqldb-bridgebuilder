@@ -94,6 +94,7 @@ New-Item -Name "tmp" -ItemType "directory" -Force > $null ; Invoke-WebRequest -U
 &#9475;&#9507; ODBFile.java<br />
 &#9475;&#9507; Query.java<br />
 &#9475;&#9507; SqlToolWrapper.java<br />
+&#9475;&#9507; TestDriver.groovy<br />
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.main.kts<br />
 &#9475;&#9507; TestDriver.py<br />
@@ -118,6 +119,12 @@ New-Item -Name "tmp" -ItemType "directory" -Force > $null ; Invoke-WebRequest -U
 
 ```bash
 java -jar "./lib/odb.jar"
+```
+
+#### Groovy (`*.groovy`) で記述されたテストドライバプログラムを実行する
+
+```bash
+groovy -cp "./lib/hsqldb.jar:./lib/odb.jar" "./src/TestDriver.groovy"
 ```
 
 #### Kotlinscript (`*.kts`) で記述されたテストドライバプログラムを実行する
@@ -176,6 +183,12 @@ java -jar "./lib/odbsql.jar" "sample.odb" "user=sa,password=,charset=utf-8"
 
 ```powershell
 java -jar "./lib/odb.jar"
+```
+
+#### Groovy (`*.groovy`) で記述されたテストドライバプログラムを実行する
+
+```powershell
+groovy -cp '"./lib/hsqldb.jar;./lib/odb.jar"' "./src/TestDriver.groovy"
 ```
 
 #### Kotlinscript (`*.kts`) で記述されたテストドライバプログラムを実行する
