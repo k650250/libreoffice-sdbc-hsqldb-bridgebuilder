@@ -60,6 +60,4 @@ try {
     System.err.println("- hsqldb.jar が正常に読み込まれていない")
     System.err.println("- このデータベースを別のプロセスが使用中")
     System.err.println("- 問合せ文中にクエリー名が含まれる")
-} catch (e: Exception) {
-    e.printStackTrace()
 }
