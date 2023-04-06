@@ -51,7 +51,9 @@ try {
     }
 } catch (e: ClassNotFoundException) {
     e.printStackTrace()
-    System.err.println("org.hsqldb.jdbcDriver が見つかりません。")
+    System.err.println("考えられる原因:")
+    System.err.println("- hsqldb.jar がクラス・パス指定されていない")
+    System.err.println("- odb.jar がクラス・パス指定されていない")
 } catch (e: SQLException) {
     e.printStackTrace()
     System.err.println("考えられる原因:")
