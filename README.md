@@ -49,9 +49,10 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
 - 必須
   - javac 19.0.1
 - 任意：テストドライバプログラム実行用
+  - Leiningen 2.10.0
   - Clojure 1.11.1
   - Groovy 4.0.8
-  - kotlinc-jvm 1.7.21
+  - Kotlin 1.7.21
   - Jython 2.7.1
   - JRuby 9.1.17.0 (2.3.3)
   - Scala 3.2.1
@@ -197,8 +198,7 @@ java -jar "./lib/odb.jar"
 #### Clojure (`*.clj`) で記述されたテストドライバプログラムを実行する
 
 ```powershell
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-clojure -M "./src/TestDriver.clj"
+lein exec "./src/TestDriver.clj"
 ```
 
 #### Groovy (`*.groovy`) で記述されたテストドライバプログラムを実行する
