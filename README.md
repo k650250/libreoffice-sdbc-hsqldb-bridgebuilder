@@ -49,6 +49,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
 - 必須
   - javac 19.0.1
 - 任意：テストドライバプログラム実行用
+  - Clojure 1.11.1
   - Groovy 4.0.8
   - kotlinc-jvm 1.7.21
   - Jython 2.7.1
@@ -95,6 +96,7 @@ New-Item -Name "tmp" -ItemType "directory" -Force > $null ; Invoke-WebRequest -U
 &#9475;&#9507; ODBFile.java<br />
 &#9475;&#9507; Query.java<br />
 &#9475;&#9507; SqlToolWrapper.java<br />
+&#9475;&#9507; TestDriver.clj<br />
 &#9475;&#9507; TestDriver.groovy<br />
 &#9475;&#9507; TestDriver.java<br />
 &#9475;&#9507; TestDriver.main.kts<br />
@@ -120,6 +122,12 @@ New-Item -Name "tmp" -ItemType "directory" -Force > $null ; Invoke-WebRequest -U
 
 ```bash
 java -jar "./lib/odb.jar"
+```
+
+#### Clojure (`*.clj`) で記述されたテストドライバプログラムを実行する
+
+```bash
+lein exec "./src/TestDriver.clj"
 ```
 
 #### Groovy (`*.groovy`) で記述されたテストドライバプログラムを実行する
@@ -184,6 +192,13 @@ java -jar "./lib/odbsql.jar" "sample.odb" "user=sa,password=,charset=utf-8"
 
 ```powershell
 java -jar "./lib/odb.jar"
+```
+
+#### Clojure (`*.clj`) で記述されたテストドライバプログラムを実行する
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+clojure -M "./src/TestDriver.clj"
 ```
 
 #### Groovy (`*.groovy`) で記述されたテストドライバプログラムを実行する
