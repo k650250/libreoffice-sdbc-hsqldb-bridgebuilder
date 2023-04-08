@@ -50,7 +50,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:./sample.od
   - javac 19.0.1
 - 任意：テストドライバプログラム実行用
   - Leiningen 2.10.0
-  - Clojure 1.11.1
+    - Clojure 1.11.1
   - Groovy 4.0.8
   - Kotlin 1.7.21
   - Jython 2.7.1
